@@ -8,21 +8,23 @@
     "dev": "ts-node src/index.ts",
     "clean": "rm -rf dist"
   },
+  "engines": {
+    "node": "20.x"  // Versão do Node.js compatível com Fastify 5.0.0
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@fastify/cors": "^10.0.1",
     "@supabase/supabase-js": "^2.45.4",
     "dotenv": "^16.4.5",
-    "fastify": "^5.0.0",
+    "fastify": "^5.0.0",  // Versão 5 do Fastify
     "googleapis": "^144.0.0",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.5.5",  // Atualizar também para garantir compatibilidade
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   }
