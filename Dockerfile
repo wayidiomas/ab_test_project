@@ -1,5 +1,5 @@
 # Etapa 1: Build da aplicação
-FROM node:16-alpine as build
+FROM node:20-alpine as build
 
 WORKDIR /usr/src/app
 
@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # Etapa 2: Execução da aplicação
-FROM node:16-alpine
+FROM node:20-alpine
 
 WORKDIR /usr/src/app
 
@@ -20,6 +20,9 @@ WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
 RUN npm install --only=production
+
+# Expor a porta da aplicação
+EXPOSE 3000
 
 # Rodar o código JavaScript compilado
 CMD ["node", "dist/index.js"]
