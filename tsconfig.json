@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "module": "commonjs", // ou "esnext" se estiver usando ES Modules
+      "esModuleInterop": true,
+      "target": "es6",
+      "rootDir": "./src",
+      "outDir": "./dist",
+      "strict": true
+    }
+  }
+  
