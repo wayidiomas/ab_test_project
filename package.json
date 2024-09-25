@@ -9,7 +9,7 @@
     "clean": "rm -rf dist"
   },
   "engines": {
-    "node": "20.x"  
+    "node": ">=19.9.0"  
   },
   "keywords": [],
   "author": "",
