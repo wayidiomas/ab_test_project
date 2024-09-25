@@ -1,23 +1,25 @@
-# Usar uma imagem base oficial do Node.js
-FROM node:18-alpine
+# Etapa 1: Build da aplicação
+FROM node:16-alpine as build
 
-# Definir o diretório de trabalho dentro do container
 WORKDIR /usr/src/app
 
-# Copiar o arquivo package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
-
-# Instalar as dependências do projeto
 RUN npm install
 
-# Copiar o restante do código da aplicação
 COPY . .
 
-# Expor a porta que o Fastify ou outro servidor vai rodar
-EXPOSE 3000
+# Compilar o TypeScript
+RUN npm run build
 
-# Definir a variável de ambiente para produção (opcional)
-ENV NODE_ENV=production
+# Etapa 2: Execução da aplicação
+FROM node:16-alpine
 
-# Iniciar a aplicação
-CMD [ "npm", "run", "dev" ]
+WORKDIR /usr/src/app
+
+# Copiar os arquivos necessários do estágio de build
+COPY --from=build /usr/src/app/package*.json ./
+COPY --from=build /usr/src/app/dist ./dist
+RUN npm install --only=production
+
+# Rodar o código JavaScript compilado
+CMD ["node", "dist/index.js"]
