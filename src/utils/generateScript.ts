@@ -27,10 +27,10 @@ export function generateRedirectScript(links: Link[], userId: string): string {
             user_id: '${userId}',
             page_url: window.location.href
           })], { type: 'application/json' });
-          navigator.sendBeacon('https://sua-api.com/log-access', data);
+          navigator.sendBeacon('https://ab-test-project.onrender.com/log-access', data); // URL do Render
         } else {
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'https://sua-api.com/log-access', true);
+          xhr.open('POST', 'https://ab-test-project.onrender.com/log-access', true); // URL do Render
           xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
           xhr.send(JSON.stringify({
             user_id: '${userId}',
