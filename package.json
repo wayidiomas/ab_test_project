@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
 "scripts": {
-  "dev": "ts-node src/index.ts",
-  "build": "tsc",
-  "start": "node dist/index.js"
-},
+    "build": "tsc",                  // Para compilar o código TypeScript para JavaScript
+    "start": "node dist/index.js",    // Para rodar o código compilado
+    "dev": "ts-node src/index.ts",    // Para usar no ambiente de desenvolvimento
+    "clean": "rm -rf dist"            // Para limpar o build
+  },
 
   "keywords": [],
   "author": "",
